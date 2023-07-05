@@ -1,6 +1,6 @@
 <template>
     <el-row>
-        <el-col :span="6"><div class="grid-content ep-bg-purple-light" />1</el-col>
+        <el-col :span="6"><div class="grid-content ep-bg-purple-light" /></el-col>
         <el-col :span="6"><div class="grid-content ep-bg-purple" />
         <el-select v-model="value" clearable placeholder="Select" @change="update">
             <el-option
@@ -11,6 +11,7 @@
             />
         </el-select>
         </el-col>
+        <el-col :span="2"><div class="grid-content ep-bg-purple-light" /></el-col>
         <el-col :span="6"><div class="grid-content ep-bg-purple" />
         <el-select v-model="value" clearable placeholder="Select">
             <el-option
@@ -21,7 +22,7 @@
             />
         </el-select>
         </el-col>
-        <el-col :span="6"><div class="grid-content ep-bg-purple-light" />4</el-col>
+        <el-col :span="6"><div class="grid-content ep-bg-purple-light" /></el-col>
     </el-row>
 </template>
 
