@@ -1,3 +1,4 @@
+/* Css style for image diplay */
 .sidebar{
     position: absolute;
     top: calc(10vh + 10px);
@@ -5,7 +6,6 @@
     margin-top: 1px; /* 调整 SideBarMenu 与上方内容的间距 */
     width: 50%;
 }
-
 .banner {
     width: 100%;
     height: 20vh; 
@@ -27,4 +27,30 @@
     width: 100%; /* 设置图片宽度为100% */
     height: 100%; /* 设置图片高度为100% */
     object-fit: cover; /* 填充容器并保持比例 */
+}
+
+
+
+/* Css Style for CardDisplay.vue */
+.time {
+    font-size: 12px;
+    color: #999;
+}
+.bottom {
+    margin-top: 13px;
+    line-height: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.button {
+    padding: 0;
+    min-height: auto;
+}
+.image {
+    width: 100%;
+    display: block;
+}
+.card-display-content{
+    margin-left: 150px;
 }
