@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// import { ref } from 'vue'
+// import { ref } from 'vue' 
 import SideBarMenu from './components/SideBarMenu.vue'
 import SelectorMenu from './components/SelectorMenu.vue'
 import CardDisplay from './components/CardDisplay.vue';
@@ -44,7 +44,6 @@ export default {
   components: {
     SideBarMenu, SelectorMenu, CardDisplay
   },
-  
   data(){
     return {
       selectedValue: '',
@@ -59,12 +58,5 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
