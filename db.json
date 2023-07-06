@@ -1,0 +1,104 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "area": "亚洲",
+      "nation": "中国",
+      "popularity": "高",
+      "name": "麻辣火锅",
+      "price": 200,
+      "productionDate": "Thu Dec 06 2023 15:28:58 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 2,
+      "area": "美洲",
+      "nation": "美国",
+      "popularity": "高",
+      "name": "经典芝士汉堡",
+      "price": 200,
+      "productionDate": "Mon Jul 06 2023 05:28:36 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 3,
+      "area": "美洲",
+      "nation": "美国",
+      "popularity": "中",
+      "name": "炸鸡块",
+      "price": 10,
+      "productionDate": "Thu May 06 2023 23:14:34 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 4,
+      "area": "欧洲",
+      "nation": "意大利",
+      "popularity": "中",
+      "name": "玛格丽塔披萨",
+      "price": 10,
+      "productionDate": "Sun Jul 11 2023 21:48:29 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 5,
+      "area": "美洲",
+      "nation": "美国",
+      "popularity": "高",
+      "name": "烤牛肉夹馍",
+      "price": 30,
+      "productionDate": "Thu Jul 21 2023 11:37:29 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 6,
+      "area": "亚洲",
+      "nation": "日本",
+      "popularity": "极高",
+      "name": "寿司拼盘",
+      "price": 20,
+      "productionDate": "Fri Aug 06 2023 00:28:29 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 7,
+      "area": "美洲",
+      "nation": "墨西哥",
+      "popularity": "较低",
+      "name": "玉米饼卷",
+      "price": 30,
+      "productionDate": "Sat Sept 16 2023 07:23:22 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 8,
+      "area": "美洲",
+      "nation": "美国",
+      "popularity": "高",
+      "name": "烤翅",
+      "price": 200,
+      "productionDate": "Mon Jan 06 2023 11:28:53 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 9,
+      "area": "南美洲",
+      "nation": "巴西",
+      "popularity": "极高",
+      "name": "巴西烤肉",
+      "price": 200,
+      "productionDate": "Thu Jul 07 2023 02:28:40 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    },
+    {
+      "id": 10,
+      "area": "欧洲",
+      "nation": "法国",
+      "popularity": "高",
+      "name": "法式可颂",
+      "price": 30,
+      "productionDate": "Fri Jun 06 2023 18:28:12 GMT+0800 (China Standard Time)",
+      "imagePath":"assets/hamburger.png"
+    }
+  ]
+}

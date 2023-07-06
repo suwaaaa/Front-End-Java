@@ -1,11 +1,29 @@
-/* Css style for image diplay */
+/* Css style for SideBarMenu.vue */
 .sidebar{
     position: absolute;
-    top: calc(10vh + 10px);
+    top: calc(20vh - 1px);
     left: 0;
-    margin-top: 1px; /* 调整 SideBarMenu 与上方内容的间距 */
+    margin-top: 1px;
     width: 50%;
 }
+/* Css style for SideBarMenu.vue scroll -- Element Plus*/
+.sidebar-wrapper {
+    height: 100%;
+    overflow: hidden;
+}
+.sidebar-scrollbar {
+    height: 100%;
+}
+.el-scrollbar__wrap {
+    height: 100%;
+}
+.el-scrollbar__view {
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+
+/* Css Style for Header.vue */
 .banner {
     width: 100%;
     height: 20vh; 
@@ -15,21 +33,25 @@
     overflow: hidden; /* 隐藏溢出部分 */
 }
 .image-container {
-    width: 100%; /* 设置容器宽度为100% */
-    height: 0; /* 设置容器高度为0，由内部图片撑开 */
+    width: 100%; 
+    height: 0; 
     padding-bottom: 56.25%; /* 设置容器高度为宽度的 56.25%（16:9 比例）*/
-    position: relative; /* 设置容器为相对定位 */
+    position: relative;
 }
 .image-container img {
-    position: absolute; /* 图片绝对定位 */
-    top: 0; /* 将图片定位到容器顶部 */
-    left: 0; /* 将图片定位到容器左侧 */
-    width: 100%; /* 设置图片宽度为100% */
-    height: 100%; /* 设置图片高度为100% */
+    position: absolute; 
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%; 
     object-fit: cover; /* 填充容器并保持比例 */
 }
 
-
+.header-wrapper {  /* 确保 <el-header> 区域不会与其他元素重叠 */
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+}
 
 /* Css Style for CardDisplay.vue */
 .time {
@@ -52,10 +74,10 @@
     display: block;
 }
 .card-display-content{
-    margin-left: 150px;
+    margin-left: 120px;  /* Card display 左移 */
 }
 
-/* globel setting */
+/* App.vue setting */
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -63,4 +85,16 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
-  }
+}
+
+.main-container {
+    height: calc(100vh - 64px); /* Adjust the height as needed to avoid overlapping with header */
+}
+.header-wrapper {
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+} 
+.sub-container {
+    margin-top: 64px; /* Adjust the margin-top value to create space below header */
+}
