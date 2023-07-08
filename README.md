@@ -17,6 +17,8 @@ npm install vue-axios
 npm install element-plus
 # json-server
 npm install -g json-server
+# install mitt, event bus
+npm install mitt
 
 ```
 

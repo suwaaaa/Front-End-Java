@@ -1,5 +1,6 @@
 /* Css style for SideBarMenu.vue */
-.sidebar{
+/* 原始 CSS */
+.sidebar {
     position: absolute;
     top: calc(20vh - 1px);
     left: 0;
@@ -74,8 +75,9 @@
     display: block;
 }
 .card-display-content{
-    margin-left: 120px;  /* Card display 左移 */
+    margin-left: 215px; 
 }
+
 
 /* App.vue setting */
 #app {
@@ -86,15 +88,38 @@
     color: #2c3e50;
     margin-top: 60px;
 }
-
 .main-container {
-    height: calc(100vh - 64px); /* Adjust the height as needed to avoid overlapping with header */
+    height: calc(100vh - 64px);
 }
 .header-wrapper {
-    position: fixed;
+    position: relative;
     width: 100%;
     z-index: 100;
-} 
+}
 .sub-container {
-    margin-top: 64px; /* Adjust the margin-top value to create space below header */
+    margin-top: 64px;
+}
+.sub-container {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+}
+.el-aside {
+    flex: 0 0 200px;
+}
+.el-main {
+    flex: 1 1 auto;
+}
+
+/* css for Logo */
+.logo {
+    width: 100px;
+}
+.logo-container {
+    position: fixed;
+    top: 18px;
+    left: 0;
+    z-index: 2000; 
+    height: calc(100vh - 24px);
 }

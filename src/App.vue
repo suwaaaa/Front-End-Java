@@ -3,6 +3,9 @@
     <el-container class="main-container">
 
       <el-header class="header-wrapper">
+        <div class="logo-container">
+            <img src="./assets/logo.jpg" alt="Logo" class="logo" />
+          </div>
         <el-row class="banner">
           <el-col :span="24">
             <HeaderImage/>
@@ -20,7 +23,12 @@
               <div class="common-layout">
                 <el-container>
                   <el-header>
-                    <SelectorMenu @updateValue="handleUpdate" />
+                    <div class="selector-menu-wrapper">
+                      <SelectorMenu v-if="selectionOptionsList.length"
+                      @updatePrice="handleUpdatePrice"
+                      @updateRemaining="handleUpdateRemaining"
+                      :options="selectionOptionsList" />
+                    </div>
                   </el-header>
 
                   <el-main>
@@ -36,12 +44,13 @@
 </template>
 
 <script>
-import { ref, watchEffect, computed  } from 'vue' 
+import { ref, computed, onMounted, onUnmounted, reactive  } from 'vue' //watchEffect
 import SideBarMenu from './components/SideBarMenu.vue'
 import SelectorMenu from './components/SelectorMenu.vue'
 import CardDisplay from './components/CardDisplay.vue';
 import HeaderImage from './components/HeaderImage.vue'
 import axios from 'axios';
+import eventBus from '../src/eventBus';
 
 export default {
   name: 'App',
@@ -51,61 +60,100 @@ export default {
   data(){
     return {
       selectedValue: '',
-      // productsList: []
     };
   },
   setup() {
     const productsList = ref([]);
+    const filterProps = reactive({ area: null, nation: null, popularity: null });
+    
     axios.get("http://localhost:8888/products").then((response) => {
       productsList.value = response.data;
-      productsList.value.forEach(product => {
-        console.log(product);
-      });
     });
+
     const formDataArraysList = computed(() => {
       if (!productsList.value.length) {
         return []; 
       }
-      const resultList = new Array();
-      const areaArray = [...new Set(productsList.value.map(product => product.area))];
-      resultList.push(areaArray);
-      const nationArray = [...new Set(productsList.value.map(product => product.nation))];
-      resultList.push(nationArray);
-      const popularityArray = [...new Set(productsList.value.map(product => product.popularity))];
-      resultList.push(popularityArray);
-
-      
-      console.log(resultList)
+      const resultList = ['area', 'nation', 'popularity'].map(prop => {
+        return [...new Set(productsList.value.map(product => product[prop]))];
+      });
       return resultList;
     });
-    watchEffect(() => {
-      formDataArraysList.value; // 触发 computed 属性以监听变化
-    });
+
+
     const displayCardList = computed(() => {
-      const displayCardResultArr = productsList.value.map(product => (
+      let displayCardResultArr = productsList.value;
+      ['area', 'nation', 'popularity'].forEach(prop => {
+        if (filterProps[prop]) {
+          displayCardResultArr = displayCardResultArr.filter(product => product[prop] === filterProps[prop]);
+        }
+      });
+
+      displayCardResultArr = displayCardResultArr.filter(product => filterPrice.value[0] <= product.price && product.price <= filterPrice.value[1]);
+      displayCardResultArr = displayCardResultArr.filter(product => filterRemaining.value[0] <= product.remaining && product.remaining <= filterRemaining.value[1]);
+
+      return displayCardResultArr.map(product => (
         {
           name: product.name,
           productionDate: product.productionDate,
           imagePath: product.imagePath,
-          price: product.price
+          area: product.area,
+          nation: product.nation,
+          popularity: product.popularity,
+          price: product.price,
+          remaining: product.remaining
         }
       ))
-      console.log(displayCardResultArr);
-    return displayCardResultArr;
     });
+    const selectionOptionsList = computed(() => {
+      const selectionOptionsArr = ['price', 'remaining'].map(prop => {
+        const arr = productsList.value.map(product => product[prop]);
+        arr.sort((a, b) => a - b);
+        return arr;
+      });
+      return selectionOptionsArr;
+    });
+
+
+    onMounted(() => {
+      ['area', 'nation', 'popularity'].forEach(prop => {
+        eventBus.on(`send${capitalizeFirstLetter(prop)}`, (value) => {
+          Object.keys(filterProps).forEach(k => filterProps[k] = k === prop ? value : null);
+        });
+      });
+    });
+    onUnmounted(() => {
+      ['area', 'nation', 'popularity'].forEach(prop => {
+        eventBus.off(`send${capitalizeFirstLetter(prop)}`);
+      });
+    });
+    function capitalizeFirstLetter(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+
+    let filterPrice = ref([0, Infinity]); // 初始值，范围是无限大
+    const handleUpdatePrice = (newPriceRange) => {
+      filterPrice.value = newPriceRange;
+    };
+    let filterRemaining = ref([0, Infinity]); // 初始值，范围是无限大
+    const handleUpdateRemaining = (newRemainingRange) => {
+      filterRemaining.value = newRemainingRange;
+    };
+
+
     return{
       productsList,
       formDataArraysList,
-      displayCardList
+      displayCardList,
+      selectionOptionsList,
+      handleUpdatePrice,
+      handleUpdateRemaining
     }
-  },
-  methods: {
-    handleUpdate(value) {
-      this.selectedValue = value;
-    },
   },
   mounted() {
     this.formDataArraysList.value;
+    this.selectionOptionsList.value;
   }
 }
 </script>

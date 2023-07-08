@@ -14,10 +14,16 @@
                                     class="image"
                                 />
                                 <div style="padding: 14px">
-                                    <span>{{displayCard.name}}</span>
+                                    <span>&lt;{{displayCard.name}}> </span>
+                                    <span>&lt;Popular: {{ displayCard.popularity }}></span>
                                     <div class="bottom">
-                                        <time class="time">{{ displayCard.productionDate }}</time>
-                                        <el-button text class="button">{{displayCard.price}} Yuan</el-button>
+                                        <time class="time">
+                                            {{ displayCard.productionDate }}
+                                             -- {{ displayCard.area }}:{{ displayCard.nation }}
+                                        </time>
+                                        <el-button text class="button" aria-readonly="true">
+                                            {{displayCard.price}} Yuan / {{ displayCard.remaining }} left
+                                        </el-button>
                                     </div>
                                 </div>
                     </el-card>
@@ -43,5 +49,6 @@ export default({
             currentDate
         }
     },
+    
 })
 </script>
